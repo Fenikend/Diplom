@@ -48,7 +48,7 @@ namespace ScheduleProg.Controllers
         // GET: Subgroups/Create
         public IActionResult Create()
         {
-            ViewData["Group_Id"] = new SelectList(_context.Groups, "Id", "Id");
+            ViewData["Group_Id"] = new SelectList(_context.Groups, "Id", "Name_Of_Group");
             return View();
         }
 

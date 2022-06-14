@@ -171,12 +171,7 @@ namespace ScheduleProg.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Potok_Id")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("Potok_Id");
 
                     b.ToTable("Groups");
                 });
@@ -252,23 +247,6 @@ namespace ScheduleProg.Data.Migrations
                     b.HasIndex("Subgroup_Id");
 
                     b.ToTable("PareSubgroups");
-                });
-
-            modelBuilder.Entity("ScheduleProg.Models.Potok", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Potok_Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Potoks");
                 });
 
             modelBuilder.Entity("ScheduleProg.Models.Semester", b =>
@@ -358,7 +336,6 @@ namespace ScheduleProg.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Discipline_Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -375,18 +352,15 @@ namespace ScheduleProg.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("First_Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Last_Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("PareId")
                         .HasColumnType("int");
 
                     b.Property<string>("User_Id")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -394,7 +368,8 @@ namespace ScheduleProg.Data.Migrations
                     b.HasIndex("PareId");
 
                     b.HasIndex("User_Id")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[User_Id] IS NOT NULL");
 
                     b.ToTable("Teachers");
                 });
@@ -521,17 +496,6 @@ namespace ScheduleProg.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ScheduleProg.Models.Group", b =>
-                {
-                    b.HasOne("ScheduleProg.Models.Potok", "Potok")
-                        .WithMany("Groups")
-                        .HasForeignKey("Potok_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Potok");
-                });
-
             modelBuilder.Entity("ScheduleProg.Models.Pare", b =>
                 {
                     b.HasOne("ScheduleProg.Models.PairTime", "PairTime")
@@ -624,9 +588,7 @@ namespace ScheduleProg.Data.Migrations
 
                     b.HasOne("ScheduleProg.Models.User", "User")
                         .WithOne("Teacher")
-                        .HasForeignKey("ScheduleProg.Models.Teacher", "User_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ScheduleProg.Models.Teacher", "User_Id");
 
                     b.Navigation("User");
                 });
@@ -646,11 +608,6 @@ namespace ScheduleProg.Data.Migrations
                     b.Navigation("PareSubgroups");
 
                     b.Navigation("Teachers");
-                });
-
-            modelBuilder.Entity("ScheduleProg.Models.Potok", b =>
-                {
-                    b.Navigation("Groups");
                 });
 
             modelBuilder.Entity("ScheduleProg.Models.Semester", b =>

@@ -21,7 +21,6 @@ namespace ScheduleProg.Data
 
         public DbSet<PareSubgroup> PareSubgroups { get; set; }
 
-        public DbSet<Potok> Potoks { get; set; }
 
         public DbSet<Pare> Pares { get; set; }
         public DbSet<ScheduleProg.Models.Subject> Subject { get; set; }
@@ -85,10 +84,7 @@ namespace ScheduleProg.Data
           .HasOne<Subgroup>(ps => ps.Subgroup)
           .WithMany(s => s.PareSubgroups)
           .HasForeignKey(ps => ps.Subgroup_Id);
-           builder.Entity<Potok>()
-          .HasMany<Group>(g=>g.Groups)
-          .WithOne(p=>p.Potok)
-          .HasForeignKey(g=>g.Potok_Id);
+          
             /*e*/
 
             /*b*/

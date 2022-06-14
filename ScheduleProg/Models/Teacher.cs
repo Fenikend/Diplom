@@ -5,11 +5,11 @@ namespace ScheduleProg.Models
     {
         public int Id { get; set; }
 
-        public string First_Name { get; set; }
+        public string? First_Name { get; set; }
 
-        public string Last_Name { get; set; }
+        public string? Last_Name { get; set; }
 
-        public string User_Id { get; set; }
+        public string? User_Id { get; set; }
 
         [ValidateNever]
         public string Full_name { get { return (First_Name + Last_Name); }  }

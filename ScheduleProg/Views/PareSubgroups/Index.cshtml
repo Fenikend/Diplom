@@ -4,21 +4,41 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>SetDate</h1>
-
-<h4>Potok</h4>
+<style>
+.btn{
+padding:20px;
+width:20%;
+}
+.group{
+width: 100%;
+justify-content: space-between;
+display: flex;
+}
+</style>
+<h1>Вибрати день тижня</h1>
 <hr />
 <div class="row">
-    <div class="col">
-        <form method="get" style="width:100%" action="~/PareSubgroups/Create">
+    <div class="row">
+        <form class="row" method="get" class="group" action="~/PareSubgroups/Create">
         <input type="submit" id="Week_Day" name="Week_Day" value="Понеділок" class="btn btn-primary"></input>
         <input type="submit" id="Week_Day" name="Week_Day" value="Вівторок" class="btn btn-primary"></input>
         <input type="submit" id="Week_Day" name="Week_Day" value="Середа" class="btn btn-primary"></input>
         <input type="submit" id="Week_Day" name="Week_Day" value="Четвер" class="btn btn-primary"></input>
         <input type="submit" id="Week_Day" name="Week_Day" value="П'ятниця" class="btn btn-primary"></input
         </form>
+        
+
        
     </div>
+    <div class="row">
+       <form class="row"  method="get" class="group" action="~/PareSubgroups/AdminView">
+        <input type="submit" id="Week_Day" style="width:100%"name="Week_Day" value="Видалити пару" class="btn btn-primary"></input>
+        </form>
+        
+
+       
+    </div>
+        
 </div>
 
 

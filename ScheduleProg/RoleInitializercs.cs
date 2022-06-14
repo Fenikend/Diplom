@@ -10,7 +10,6 @@ namespace ScheduleProg
         {
             string adminEmail = "admin@gmail.com";
             string password = "Axi$&ombre2";
-            string password2 = "Axi$&ombre22";
             string firstname = "Grigor";
             string lastname = "Abusi";
 

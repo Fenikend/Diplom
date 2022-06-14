@@ -14,6 +14,8 @@ namespace ScheduleProg.Models
         public String User_Id { get; set; }
 
         [ValidateNever]
+        public string Full_name { get { return (First_Name + Last_Name); } }
+        [ValidateNever]
         public Subgroup Subgroup { get; set; }
 
         [ValidateNever]

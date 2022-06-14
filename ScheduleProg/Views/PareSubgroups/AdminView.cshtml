@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ScheduleProg.Models.PareSubgroup>
+
+@{
+    ViewData["Title"] = "AdminView";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pare_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subgroup_Id)
+            </th>
+             
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pare_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subgroup_Id)
+            </td>
+             
+        
+            <td>
+                @Html.ActionLink("Edit", "Змінити", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Видалити", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+

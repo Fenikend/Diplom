@@ -8,10 +8,8 @@ namespace ScheduleProg.Models
         public string Course{ get; set; }
 
         public string Group_Name{ get; set; }
-
-        public int Potok_Id{ get; set; }
         [ValidateNever]
-        public Potok Potok { get; set; }
+        public string Name_Of_Group { get { return (Group_Name + Course); } }
 
         [ValidateNever]
 

@@ -13,25 +13,30 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Subject_Id" class="control-label"></label>
+                <label asp-for="Subject_Id" class="control-label">Назва предмету</label>
                 <select asp-for="Subject_Id" class ="form-control" asp-items="ViewBag.Subject_Id"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Semester_Id" class="control-label"></label>
+                <label asp-for="Semester_Id" class="control-label">Семестр</label>
                 <select asp-for="Semester_Id" class ="form-control" asp-items="ViewBag.Semester_Id"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Teacher_Id" class="control-label"></label>
+                <label asp-for="Teacher_Id" class="control-label">Вчитель</label>
                 <select asp-for="Teacher_Id" class ="form-control" asp-items="ViewBag.Teacher_Id"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Pair_Time_Id" class="control-label"></label>
+                <label asp-for="Pair_Time_Id" class="control-label">Час пари</label>
                 <select asp-for="Pair_Time_Id" class ="form-control" asp-items="ViewBag.Pair_Time_Id"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Week_Day" class="control-label"></label>
-                <input asp-for="Week_Day" class="form-control" />
-                <span asp-validation-for="Week_Day" class="text-danger"></span>
+                <label asp-for="Week_Day" class="control-label">День тижня</label>
+                <select asp-for="Week_Day" class="form-control" >
+                  <option value="Понеділок">Понеділок</option>
+                  <option value="Вівторок">Вівторок</option>
+                  <option value="Середа">Середа</option>
+                  <option value="Четвер">Четвер</option>
+                  <option value="П'ятниця">П'ятниця</option>
+                </select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -41,7 +46,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="AdminView">Back to List</a>
 </div>
 
 @section Scripts {

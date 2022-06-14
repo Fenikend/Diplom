@@ -1,0 +1,42 @@
+﻿@model ScheduleProg.Models.CreateStudent
+
+@{
+    ViewData["Title"] = "CreateStudent";
+   
+}
+<h2>Додати нового студента</h2>
+<form method="post" asp-controller="Account" asp-action="CreateStudent">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div>
+        <label asp-for="First_Name">Ім'я</label><br />
+        <input asp-for="First_Name" />
+        <span asp-validation-for="First_Name"></span>
+    </div>
+    <div>
+        <label asp-for="Last_Name">Прізвище</label><br />
+        <input asp-for="Last_Name" />
+        <span asp-validation-for="Last_Name"></span>
+    </div>
+    <div>
+    <div class="form-group">
+        <label asp-for="Subgroup_Id" class="control-label">Підгрупв</label>
+        <select asp-for="Subgroup_Id" class ="form-control" asp-items="ViewBag.Subgroup_Id"></select>
+    </div>
+    <div>
+        <label asp-for="Email"></label>Пошта<br />
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label asp-for="Password">Пароль</label><br />
+        <input asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+   
+    <div>
+        <input type="submit" value="Створити" />
+    </div>
+</form>
+@section scripts{
+
+}

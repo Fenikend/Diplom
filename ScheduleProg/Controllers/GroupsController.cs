@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using ScheduleProg.Models;
 
 namespace ScheduleProg.Controllers
 {
+    [Authorize]
     public class GroupsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -22,7 +24,7 @@ namespace ScheduleProg.Controllers
         // GET: Groups
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Groups.Include(p => p.Potok);
+            var applicationDbContext = _context.Groups;
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -35,7 +37,6 @@ namespace ScheduleProg.Controllers
             }
 
             var @group = await _context.Groups
-                .Include(p => p.Potok)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (@group == null)
             {
@@ -48,7 +49,6 @@ namespace ScheduleProg.Controllers
         // GET: Groups/Create
         public IActionResult Create()
         {
-            ViewData["Potok_Id"] = new SelectList(_context.Potoks, "Id", "Id");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace ScheduleProg.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Course,Group_Name,Potok_Id")] Group @group)
+        public async Task<IActionResult> Create([Bind("Id,Course,Group_Name")] Group @group)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,6 @@ namespace ScheduleProg.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Potok_Id"] = new SelectList(_context.Potoks, "Id", "Id", @group.Potok_Id);
             return View(@group);
         }
 
@@ -82,7 +81,6 @@ namespace ScheduleProg.Controllers
             {
                 return NotFound();
             }
-            ViewData["Potok_Id"] = new SelectList(_context.Potoks, "Id", "Id", @group.Potok_Id);
             return View(@group);
         }
 
@@ -91,7 +89,7 @@ namespace ScheduleProg.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Course,Group_Name,Potok_Id")] Group @group)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Course,Group_Name")] Group @group)
         {
             if (id != @group.Id)
             {
@@ -118,7 +116,6 @@ namespace ScheduleProg.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Potok_Id"] = new SelectList(_context.Potoks, "Id", "Id", @group.Potok_Id);
             return View(@group);
         }
 
@@ -131,7 +128,6 @@ namespace ScheduleProg.Controllers
             }
 
             var @group = await _context.Groups
-                .Include(p => p.Potok)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (@group == null)
             {

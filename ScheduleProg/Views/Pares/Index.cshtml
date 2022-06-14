@@ -36,7 +36,14 @@ text-align: center;
  
 </style>
 
+@{
+if(ViewBag.monday_item!=null 
+|| ViewBag.tuesday_item!=null 
+|| ViewBag.wednesday_item!=null 
+|| ViewBag.thursday_item!=null
+|| ViewBag.friday_item!=null
 
+){
 <div class="container">
 
     <h1 class="centred-text">Розклад</h1>
@@ -171,6 +178,7 @@ text-align: center;
 
                         </div>
                     </div>
+
                 
                 
 
@@ -182,7 +190,7 @@ text-align: center;
 <div class="row">
     <div class="row week-day week-day-text centred-text border" >П'ятниця</div>
     <div class="row  schedule-body">
-            @foreach (var item in ViewBag.friday_item   ) {
+            @foreach (var item in ViewBag.friday_item) {
 
                     <div class="row">
                         <div class="col border ">
@@ -207,4 +215,11 @@ text-align: center;
 }</div >
  <div class="row week-day week-day-text centred-text border" >П'ятниця</div>
 </div>
-<div class="container">
+</div>
+}
+
+else{
+<h1>Поки що розклад не готовий</h1>
+
+}
+}

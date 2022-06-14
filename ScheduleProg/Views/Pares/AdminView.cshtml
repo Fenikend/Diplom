@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewData["Title"] = "AdminView";
+}
+
+<h1>Список занять</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Предмет
+            </th>
+            <th>
+               Семестр
+            </th>
+             <th>
+                 Вчитель
+            </th>
+             <th>
+                 Час пар
+            </th>
+             <th>
+                 День тижня
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in ViewBag.admin_item) {
+        <tr>
+            <td>
+                @item.Discipline_Name
+            </td>
+            <td>
+                @item.Semester_Name
+            </td>
+             <td>
+                @item.Teacher.First_Name @item.Teacher.Last_Name
+            </td>
+             <td>
+                @item.PairTime.Begin_Time - @item.PairTime.End_Time
+            </td>
+             <td>
+                @item.Week_Day
+            </td>
+        
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Змінити</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Видалити</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+

@@ -21,11 +21,17 @@ namespace ScheduleProg.Controllers
         {
             _logger = logger;
         }
-        [AllowAnonymous]
         public IActionResult Index()
         {
+            if (User.IsInRole("Адміністратор"))
+            {
+                return View("AdminPage");
+            }
+            else {
+                return View();
+            }
             
-            return View();
+            
         }
 
         public IActionResult Privacy()

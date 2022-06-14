@@ -6,6 +6,8 @@ namespace ScheduleProg.Models
         public int Id { get; set; }
         public string Subgr_Name { get; set; }
 
+
+   
         public int Group_Id { get; set; }
         [ValidateNever]
         public Group Group { get; set; }

@@ -1,23 +1,35 @@
-﻿@model ScheduleProg.Models.PareSubgroup
+﻿
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Створити заняття</h1>
 
-<h4>PareSubgroup</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form method="post"  action="~/PareSubgroups/Create">
+           
             <div class="form-group">
-                
-                <label asp-for="Pare_Id" class="control-label"></label>
-                <select asp-for="Pare_Id" class ="form-control" asp-items="ViewBag.Pare_Id"></select>
-                 <label asp-for="Subgroup_Id" class="control-label"></label>
-                <select asp-for="Subgroup_Id" class ="form-control" asp-items="ViewBag.Subgroup_Id"></select>
+                Пара 1
+                <select value="Pare_Id" id="Pare_Id" name="Pare_Id" class ="form-control" asp-items="ViewBag.Pare_Id2"></select>
+                Пара 2
+                <select value="Pare_Id2" id="Pare_Id2" name="Pare_Id2" class ="form-control" asp-items="ViewBag.Pare_Id2"></select>
+
+                Пара 3
+                <select value="Pare_Id3" id="Pare_Id3" name="Pare_Id3" class ="form-control" asp-items="ViewBag.Pare_Id3"></select>
+                Пара 4
+                <select value="Pare_Id4" id="Pare_Id4" name="Pare_Id4" class ="form-control" asp-items="ViewBag.Pare_Id4"></select>
+
+                Пара 5
+                <select value="Pare_Id5" id="Pare_Id5" name="Pare_Id5" class ="form-control" asp-items="ViewBag.Pare_Id5"></select>
+                Пара 6
+                <select value="Pare_Id6" id="Pare_Id6" name="Pare_Id6" class ="form-control" asp-items="ViewBag.Pare_Id6"></select>
+
+                Підгрупа
+
+                <select value="Subgroup_Id" id="Subgroup_Id" name="Subgroup_Id" class ="form-control" asp-items="ViewBag.Subgroup_Id"></select>
            
             </div>
         
