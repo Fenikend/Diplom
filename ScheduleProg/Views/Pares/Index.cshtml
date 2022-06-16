@@ -18,6 +18,7 @@
 }
 .pare-body{
 flex:9 0 0%;
+text-align: center;
 }
 .row
 {
@@ -70,8 +71,10 @@ if(ViewBag.monday_item!=null
 
 
 
-
-<div class="row">
+<div class="row centred-text">
+    Понеділок
+</div>
+<div class="row border ">
     <div class="row week-day week-day-text centred-text border" >Понеділок</div>
     <div class="row  schedule-body">
 @foreach (var item in ViewBag.monday_item) {
@@ -82,8 +85,7 @@ if(ViewBag.monday_item!=null
           
     </div>
      <div class="col pare-body border">
-          @item.Semester.Semester_Name
-          @item.Subject.Discipline_Name
+          @item.Subject.Discipline_Name,
                 @item.Teacher.First_Name @item.Teacher.Last_Name
     </div>
      <div class="col border ">
@@ -97,7 +99,10 @@ if(ViewBag.monday_item!=null
 }</div >
  <div class="row week-day week-day-text centred-text border" >Понеділок</div>
 </div>
-<div class="row">
+<div class="row centred-text">
+    Вівторок
+</div>
+<div class="row border">
     <div class="row week-day week-day-text centred-text border" >Вівторок</div>
     <div class="row  schedule-body">
             @foreach (var item in ViewBag.tuesday_item) {
@@ -109,8 +114,7 @@ if(ViewBag.monday_item!=null
 
                         </div>
                         <div class="col border pare-body ">
-                            @item.Semester.Semester_Name
-                            @item.Subject.Discipline_Name
+                            @item.Subject.Discipline_Name,
                             @item.Teacher.First_Name @item.Teacher.Last_Name
                         </div>
                         <div class="col border pare-time ">
@@ -126,7 +130,11 @@ if(ViewBag.monday_item!=null
  <div class="row week-day week-day-text centred-text border" >Вівторок</div>
 </div>
 
-<div class="row">
+<div class="row centred-text">
+    Середа
+</div>
+
+<div class="row border">
     <div class="row week-day week-day-text centred-text border" >Середа</div>
     <div class="row  schedule-body">
             @foreach (var item in ViewBag.wednesday_item) {
@@ -138,8 +146,7 @@ if(ViewBag.monday_item!=null
 
                         </div>
                         <div class="col border pare-body ">
-                            @item.Semester.Semester_Name
-                            @item.Subject.Discipline_Name
+                            @item.Subject.Discipline_Name,
                             @item.Teacher.First_Name @item.Teacher.Last_Name
                         </div>
                         <div class="col border pare-time ">
@@ -155,8 +162,10 @@ if(ViewBag.monday_item!=null
  <div class="row week-day week-day-text centred-text border" >Середа</div>
 </div>
 
-
-<div class="row">
+<div class="row centred-text">
+    Четвер
+</div>
+<div class="row border">
     <div class="row week-day week-day-text centred-text border" >Четвер</div>
     <div class="row  schedule-body">
             @foreach (var item in ViewBag.thursday_item) {
@@ -168,8 +177,7 @@ if(ViewBag.monday_item!=null
 
                         </div>
                         <div class="col border pare-body ">
-                            @item.Semester.Semester_Name
-                            @item.Subject.Discipline_Name
+                            @item.Subject.Discipline_Name,
                             @item.Teacher.First_Name @item.Teacher.Last_Name
                         </div>
                         <div class="col border pare-time ">
@@ -185,9 +193,10 @@ if(ViewBag.monday_item!=null
 }</div >
  <div class="row week-day week-day-text centred-text border" >Четвер</div>
 </div>
-
-
-<div class="row">
+<div class="row centred-text">
+    П'ятниця
+</div>
+<div class="row border">
     <div class="row week-day week-day-text centred-text border" >П'ятниця</div>
     <div class="row  schedule-body">
             @foreach (var item in ViewBag.friday_item) {
@@ -199,8 +208,7 @@ if(ViewBag.monday_item!=null
 
                         </div>
                         <div class="col border pare-body ">
-                            @item.Semester.Semester_Name
-                            @item.Subject.Discipline_Name
+                            @item.Subject.Discipline_Name,
                             @item.Teacher.First_Name @item.Teacher.Last_Name
                         </div>
                         <div class="col border pare-time ">

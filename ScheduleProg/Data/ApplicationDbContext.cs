@@ -16,14 +16,14 @@ namespace ScheduleProg.Data
         public DbSet<Student> Students { get; set; }
 
         public DbSet<Teacher> Teachers { get; set; }
-
+        
         public DbSet<Subgroup> Subgroups { get; set; }
 
         public DbSet<PareSubgroup> PareSubgroups { get; set; }
 
 
         public DbSet<Pare> Pares { get; set; }
-        public DbSet<ScheduleProg.Models.Subject> Subject { get; set; }
+        public DbSet<Subject> Subject { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

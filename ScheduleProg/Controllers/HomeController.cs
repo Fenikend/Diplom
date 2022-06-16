@@ -28,7 +28,7 @@ namespace ScheduleProg.Controllers
                 return View("AdminPage");
             }
             else {
-                return View();
+                return View("Index");
             }
             
             

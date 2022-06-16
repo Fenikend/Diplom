@@ -6,17 +6,15 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Pare_Id)
+                Пара
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Subgroup_Id)
+               Група
             </th>
              
             
@@ -27,16 +25,15 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Pare_Id)
+                @Html.DisplayFor(modelItem => item.Pare.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Subgroup_Id)
+                @Html.DisplayFor(modelItem => item.Subgroup.Id)
             </td>
              
         
             <td>
-                @Html.ActionLink("Edit", "Змінити", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Видалити", new { /* id=item.PrimaryKey */ })
+                 <a asp-action="Delete" asp-route-id="@item.Pare.Id">Видалити</a>
             </td>
         </tr>
 }

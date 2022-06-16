@@ -31,6 +31,7 @@ namespace ScheduleProg.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Адміністратор")]
 
         [HttpGet]
         public IActionResult CreateStudent()
@@ -38,6 +39,8 @@ namespace ScheduleProg.Controllers
             ViewData["Subgroup_Id"] = new SelectList(_context.Subgroups, "Id", "Subgr_Name");
             return View();
         }
+
+        [Authorize(Roles = "Адміністратор")]
         [HttpPost]
         public async Task<IActionResult> CreateStudent(CreateStudent model)
         {
@@ -70,6 +73,8 @@ namespace ScheduleProg.Controllers
         /// <summary>
 
         // GET: PairTimes/Delete/5
+
+        [Authorize(Roles = "Адміністратор")]
         public IActionResult DeleteUser()
         {
             
@@ -108,7 +113,8 @@ namespace ScheduleProg.Controllers
         }
 
 
-        /// <returns></returns>
+        
+        [Authorize(Roles = "Адміністратор")]
         [HttpGet]
         public IActionResult CreateTeacher()
         {
@@ -144,10 +150,14 @@ namespace ScheduleProg.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+
+        [Authorize(Roles = "Адміністратор")]
         public IActionResult CreateAdministrator()
         {
             return View();
         }
+
+        [Authorize(Roles = "Адміністратор")]
         [HttpPost]
         public async Task<IActionResult> CreateAdministrator(CreateAdministrator model)
         {

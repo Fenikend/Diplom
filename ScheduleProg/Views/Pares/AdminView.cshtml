@@ -32,10 +32,10 @@
 @foreach (var item in ViewBag.admin_item) {
         <tr>
             <td>
-                @item.Discipline_Name
+                @item.Subject.Discipline_Name
             </td>
             <td>
-                @item.Semester_Name
+                @item.Semester.Semester_Name
             </td>
              <td>
                 @item.Teacher.First_Name @item.Teacher.Last_Name

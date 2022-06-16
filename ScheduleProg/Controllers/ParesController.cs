@@ -12,7 +12,7 @@ using ScheduleProg.Models;
 
 namespace ScheduleProg.Controllers
 {
-    
+    [Authorize]
     public class ParesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -23,8 +23,8 @@ namespace ScheduleProg.Controllers
         }
 
         // GET: Pares
-        [Authorize]
-     
+        [Authorize(Roles = "Адміністратор")]
+
         public async Task<IActionResult> AdminView()
         {
             ViewBag.admin_item = _context.Schedules
@@ -32,7 +32,7 @@ namespace ScheduleProg.Controllers
                                .Include(p => p.Semester)
                                .Include(p => p.Subject)
                                .Include(p => p.Teacher);
-            return View();
+            return View(ViewBag.admin_item);
         }
         /*public async Task<IActionResult> AdminView()
         {
@@ -65,8 +65,9 @@ namespace ScheduleProg.Controllers
                                .Include(p => p.Semester)
                                .Include(p => p.Subject)
                                .Include(p => p.Teacher)
+                               .Where(p => p.Week_Day == "Понеділок")
                     .Where(p => p.Teacher_Id == TeacherId)
-                    .DistinctBy(p => p.PairTime.Begin_Time);
+                    .OrderBy(p => p.PairTime.Id);
 
                     ViewBag.tuesday_item = _context.Schedules
                                .Include(p => p.PairTime)
@@ -75,7 +76,7 @@ namespace ScheduleProg.Controllers
                                .Include(p => p.Teacher)
                     .Where(p => p.Week_Day == "Вівторок")
                     .Where(p => p.Teacher_Id == TeacherId)
-                    .DistinctBy(p => p.PairTime.Begin_Time);
+                    .OrderBy(p => p.PairTime.Id);
 
                     ViewBag.wednesday_item = _context.Schedules
                                .Include(p => p.PairTime)
@@ -84,7 +85,7 @@ namespace ScheduleProg.Controllers
                                .Include(p => p.Teacher)
                     .Where(p => p.Week_Day == "Середа")
                     .Where(p => p.Teacher_Id == TeacherId)
-                    .DistinctBy(p => p.PairTime.Begin_Time);
+                    .OrderBy(p => p.PairTime.Id);
 
                     ViewBag.thursday_item = _context.Schedules
                                    .Include(p => p.PairTime)
@@ -93,7 +94,7 @@ namespace ScheduleProg.Controllers
                                    .Include(p => p.Teacher)
                         .Where(p => p.Week_Day == "Четвер")
                         .Where(p => p.Teacher_Id == TeacherId)
-                        .DistinctBy(p => p.PairTime.Begin_Time);
+                        .OrderBy(p => p.PairTime.Id);
 
                     ViewBag.friday_item = _context.Schedules
                                    .Include(p => p.PairTime)
@@ -102,7 +103,7 @@ namespace ScheduleProg.Controllers
                                    .Include(p => p.Teacher)
                         .Where(p => p.Week_Day == "П'ятниця")
                         .Where(p => p.Teacher_Id == TeacherId)
-                        .DistinctBy(p => p.PairTime.Begin_Time);
+                        .OrderBy(p => p.PairTime.Id);
                 }
                 if (StudentSubgrId != 0)
                 {
@@ -116,6 +117,7 @@ namespace ScheduleProg.Controllers
                                    .Include(p => p.Teacher)
                         .Where(p => p.Week_Day == "Понеділок")
                         .Where(p => CurPareIDs.Contains(p.Id))
+                        .OrderBy(p => p.PairTime.Id)
                         ;
 
                     ViewBag.tuesday_item = _context.Schedules
@@ -124,7 +126,8 @@ namespace ScheduleProg.Controllers
                                    .Include(p => p.Subject)
                                    .Include(p => p.Teacher)
                         .Where(p => p.Week_Day == "Вівторок")
-                        .Where(p => CurPareIDs.Contains(p.Id));
+                        .Where(p => CurPareIDs.Contains(p.Id))
+                        .OrderBy(p => p.PairTime.Id);
 
                     ViewBag.wednesday_item = _context.Schedules
                                    .Include(p => p.PairTime)
@@ -132,7 +135,8 @@ namespace ScheduleProg.Controllers
                                    .Include(p => p.Subject)
                                    .Include(p => p.Teacher)
                         .Where(p => p.Week_Day == "Середа")
-                        .Where(p => CurPareIDs.Contains(p.Id));
+                        .Where(p => CurPareIDs.Contains(p.Id))
+                        .OrderBy(p => p.PairTime.Id);
 
                     ViewBag.thursday_item = _context.Schedules
                                    .Include(p => p.PairTime)
@@ -140,7 +144,8 @@ namespace ScheduleProg.Controllers
                                    .Include(p => p.Subject)
                                    .Include(p => p.Teacher)
                         .Where(p => p.Week_Day == "Четвер")
-                        .Where(p => CurPareIDs.Contains(p.Id));
+                        .Where(p => CurPareIDs.Contains(p.Id))
+                        .OrderBy(p => p.PairTime.Id);
 
                     ViewBag.friday_item = _context.Schedules
                                    .Include(p => p.PairTime)
@@ -148,7 +153,8 @@ namespace ScheduleProg.Controllers
                                    .Include(p => p.Subject)
                                    .Include(p => p.Teacher)
                         .Where(p => p.Week_Day == "П'ятниця")
-                        .Where(p => CurPareIDs.Contains(p.Id));
+                        .Where(p => CurPareIDs.Contains(p.Id))
+                        .OrderBy(p => p.PairTime.Id);
                 }
                 var applicationDbContext = _context.Schedules
                                .Include(p => p.PairTime)
@@ -202,6 +208,7 @@ namespace ScheduleProg.Controllers
         }
 
         // GET: Pares/Edit/5
+        [Authorize(Roles = "Адміністратор")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Schedules == null)

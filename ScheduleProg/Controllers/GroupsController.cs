@@ -11,7 +11,7 @@ using ScheduleProg.Models;
 
 namespace ScheduleProg.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Адміністратор")]
     public class GroupsController : Controller
     {
         private readonly ApplicationDbContext _context;
